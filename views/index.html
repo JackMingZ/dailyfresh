@@ -1,0 +1,351 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>天天生鲜-首页</title>
+	<link rel="stylesheet" type="text/css" href="../static/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="../static/css/main.css">
+	<script type="text/javascript" src="../static/js/jquery-1.12.4.min.js"></script>
+	<script type="text/javascript" src="../static/js/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="../static/js/slide.js"></script>
+</head>
+<body>
+	<div class="header_con">
+		<div class="header">
+			<div class="welcome fl">欢迎来到天天生鲜!</div>
+			<div class="fr">
+				{{if compare .userName ""}}
+					<div class="login_btn fl">
+						<a href="/login">登录</a>
+						<span>|</span>
+						<a href="/register">注册</a>
+					</div>
+				{{else}}
+					<div class="login_btn fl">
+						欢迎您：<em>{{.userName}}</em>
+						<span>|</span>
+						<a href="/user/logout">退出</a>
+					</div>
+				{{end}}
+				<div class="user_link fl">
+					<span>|</span>
+					<a href="/user/userCenterInfo">用户中心</a>
+					<span>|</span>
+					<a href="/user/cart">我的购物车</a>
+					<span>|</span>
+					<a href="/user/userCenterOrder">我的订单</a>
+				</div>
+			</div>
+		</div>		
+	</div>
+
+	<div class="search_bar clearfix">
+		<a href="index.html" class="logo fl"><img src="../static/images/logo.png"></a>
+		<div class="search_con fl">
+			<form action="/goodsSearch"method="post">
+			<input type="text" class="input_text fl" name="" placeholder="搜索商品">
+			<input type="submit" class="input_btn fr" name="" value="搜索">
+			</form>
+		</div>
+		<div class="guest_cart fr">
+			<a href="/user/cart" class="cart_name fl">我的购物车</a>
+			<div class="goods_count fl" id="show_count"></div>
+		</div>
+	</div>
+
+	<div class="navbar_con">
+		<div class="navbar">
+			<h1 class="fl">全部商品分类</h1>
+			<ul class="navlist fl">
+				<li><a href="">首页</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="center_con clearfix">
+		<ul class="subnav fl">
+			{{range .goodsTypes}}
+				<li><a href="/goodsList?typeId={{.Id}}" class="{{.Logo}}">{{.Name}}</a></li>
+			{{end}}
+		</ul>
+		<div class="slide fl">
+			<ul class="slide_pics">
+				<li><img src="../static/images/slide1.jpg" alt="幻灯片"></li>
+				<li><img src="../static/images/slide102.jpg" alt="幻灯片"></li>
+
+				<li><img src="../static/images/slide104.jpg" alt="幻灯片"></li>
+				<li><img src="../static/images/slide105.jpg" alt="幻灯片"></li>
+				<li><img src="../static/images/slide106.jpg" alt="幻灯片"></li>
+				<li><img src="../static/images/slide107.jpg" alt="幻灯片"></li>
+				<li><img src="../static/images/slide108.jpg" alt="幻灯片"></li>
+				<!--{{range .goodsTypes}}
+				<li><a href="/goodsList?typeId={{.Id}}" class="{{.Logo}}">{{.Name}}</a></li>
+				{{end}}-->
+			</ul>
+			<div class="prev"></div>
+			<div class="next"></div>
+			<ul class="points"></ul>
+		</div>
+		<div class="adv fl">
+				<a href="/goodsDetail?id={{.GoodsSKU.Id}}"><img src="../static/images/adv01.jpg"></a>
+				<a href="/goodsDetail?id={{.GoodsSKU.Id}}"><img src="../static/images/adv02.jpg"></a>
+
+		</div>
+	</div>
+
+	<div class="list_model">
+		<div class="list_title clearfix">
+			<h3 class="fl" id="model01">新鲜水果</h3>
+			<div class="subtitle fl">
+				<span>|</span>
+				<!--{{range .textGoods}}
+					<a href="#">{{.Name}}</a>
+				{{end}}-->
+				<a href="/goodsDetail?id=26">越南芒果</a>
+				<a href="/goodsDetail?id=84">加州提子</a>
+				<a href="/goodsDetail?id=85">亚马逊牛油果</a>
+			</div>
+			<a href="/goodsList?typeId=1" class="goods_more fr" id="fruit_more">查看更多 ></a>
+		</div>
+
+		<div class="goods_con clearfix">
+			<div class="goods_banner fl"><img src="../static/images/fruit111.jpg"></div>
+			<!--<div class="goods_banner fl"><img src="{{.type.Image}}"></div>-->
+			<ul class="goods_list fl">
+				<li>
+					<h4><a href="/goodsDetail?id=39">北美火龙果</a></h4>
+					<a href="/goodsDetail?id=39"><img src="../static/images/goods/goods11104.jpg"></a>
+					<div class="prize">¥ 53.00</div>
+				</li>
+				<li>
+					<h4><a href="/goodsDetail?id=40">黑加仑葡萄</a></h4>
+					<a href="/goodsDetail?id=40"><img src="../static/images/goods/goods11105.jpg"></a>
+					<div class="prize">¥ 23.00</div>
+				</li>
+				<li>
+					<h4><a href="/goodsDetail?id=4">柠檬</a></h4>
+					<a href="/goodsDetail?id=4"><img src="../static/images/goods/goods1004.jpg"></a>
+					<div class="prize">¥ 32.00</div>
+				</li>
+				<li>
+					<h4><a href="/goodsDetail?id=5">奇异果</a></h4>
+					<a href="/goodsDetail?id=5"><img src="../static/images/goods/goods1005.jpg"></a>
+					<div class="prize">¥ 12.00</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="list_model">
+		<div class="list_title clearfix">
+			<h3 class="fl" id="model02">海鲜水产</h3>
+			<div class="subtitle fl">
+				<span>|</span>
+				<a href="/goodsDetail?id=6">河虾</a>
+				<a href="/goodsDetail?id=8">扇贝</a>
+			</div>
+			<a href="/goodsList?typeId=2" class="goods_more fr">查看更多 ></a>
+		</div>
+
+		<div class="goods_con clearfix">
+			<div class="goods_banner fl"><img src="../static/images/seafish111.jpg"></div>
+			<ul class="goods_list fl">
+				<li>
+					<h4><a href="/goodsDetail?id=58">红魔虾</a></h4>
+					<a href="/goodsDetail?id=58"><img src="../static/images/goods/goods11140.jpg"></a>
+					<div class="prize">¥ 140.00</div>
+				</li>
+				<li>
+					<h4><a href="/goodsDetail?id=8">扇贝</a></h4>
+					<a href="/goodsDetail?id=8"><img src="../static/images/goods/goods008.jpg"></a>
+					<div class="prize">¥ 57.00</div>
+				</li>
+				<li>
+					<h4><a href="/goodsDetail?id=7">北海道秋刀鱼</a></h4>
+					<a href="/goodsDetail?id=7"><img src="../static/images/goods/goods007.jpg"></a>
+					<div class="prize">¥ 50.00</div>
+				</li>
+				<li>
+					<h4><a href="/goodsDetail?id=53">贝柱</a></h4>
+					<a href="/goodsDetail?id=53"><img src="../static/images/goods/goods11135.jpg"></a>
+					<div class="prize">¥ 130.00</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="list_model">
+		<div class="list_title clearfix">
+			<h3 class="fl" id="model03">猪牛羊肉</h3>
+			<div class="subtitle fl">
+				<span>|</span>
+				<a href="/goodsDetail?id=11">牛肉</a>
+				<a href="/goodsDetail?id=10">超级猪肉</a>
+				<a href="/goodsDetail?id=12">无膻味的羊肉</a>
+			</div>
+			<a href="/goodsList?typeId=3" class="goods_more fr">查看更多 ></a>
+		</div>
+
+		<div class="goods_con clearfix">
+			<div class="goods_banner fl"><img src="../static/images/pigniuniu.jpg"></div>
+			<ul class="goods_list fl">
+				<li>
+					<h4><a href="/goodsDetail?id=10">猪肉</a></h4>
+					<a href="/goodsDetail?id=10"><img src="../static/images/goods/goods010.jpg"></a>
+					<div class="prize">¥ 24.00</div>
+				</li>
+				<li>
+					<h4><a href="/goodsDetail?id=11">牛肉</a></h4>
+					<a href="/goodsDetail?id=11"><img src="../static/images/goods/goods011.jpg"></a>
+					<div class="prize">¥ 35.00</div>
+				</li>
+				<li>
+					<h4><a href="/goodsDetail?id=12">羊肉</a></h4>
+					<a href="/goodsDetail?id=12"><img src="../static/images/goods/goods122.jpg"></a>
+					<div class="prize">¥ 57.00</div>
+				</li>
+				<li>
+					<h4><a href="/goodsDetail?id=13">牛排</a></h4>
+					<a href="/goodsDetail?id=13"><img src="../static/images/goods/goods013.jpg"></a>
+					<div class="prize">¥ 100.00</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="list_model">
+		<div class="list_title clearfix">
+			<h3 class="fl" id="model04">禽类蛋品</h3>
+			<div class="subtitle fl">
+				<span>|</span>
+				<a href="/goodsDetail?id=14">盒装鸡蛋</a>
+				<a href="/goodsDetail?id=15">鸡肉</a>
+				<a href="/goodsDetail?id=16">鸭蛋</a>
+			</div>
+			<a href="/goodsList?typeId=4" class="goods_more fr">查看更多 ></a>
+		</div>
+
+		<div class="goods_con clearfix">
+			<div class="goods_banner fl"><img src="../static/images/eggegg.jpg"></div>
+			<ul class="goods_list fl">
+				<li>
+					<h4><a href="/goodsDetail?id=14">盒装鸡蛋</a></h4>
+					<a href="/goodsDetail?id=14"><img src="../static/images/goods/goods114.jpg"></a>
+					<div class="prize">¥ 23.00</div>
+				</li>
+				<li>
+					<h4><a href="/goodsDetail?id=15">鸡肉</a></h4>
+					<a href="/goodsDetail?id=15"><img src="../static/images/goods/goods015.jpg"></a>
+					<div class="prize">¥ 32.00</div>
+				</li>
+				<li>
+					<h4><a href="/goodsDetail?id=16">鸭蛋</a></h4>
+					<a href="/goodsDetail?id=16"><img src="../static/images/goods/goods016.jpg"></a>
+					<div class="prize">¥ 45.00</div>
+				</li>
+				<li>
+					<h4><a href="/goodsDetail?id=17">鸡腿</a></h4>
+					<a href="/goodsDetail?id=17"><img src="../static/images/goods/goods017.jpg"></a>
+					<div class="prize">¥ 45.00</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="list_model">
+		<div class="list_title clearfix">
+			<h3 class="fl" id="model05">新鲜蔬菜</h3>
+			<div class="subtitle fl">
+				<span>|</span>
+				<a href="/goodsDetail?id=18">白菜</a>
+				<a href="/goodsDetail?id=19">芹菜</a>
+				<a href="/goodsDetail?id=20">香菜</a>
+			</div>
+			<a href="/goodsList?typeId=5" class="goods_more fr">查看更多 ></a>
+		</div>
+
+		<div class="goods_con clearfix">
+			<div class="goods_banner fl"><img src="../static/images/shucai.jpg"></div>
+			<ul class="goods_list fl">
+				<li>
+					<h4><a href="/goodsDetail?id=18">白菜</a></h4>
+					<a href="/goodsDetail?id=18"><img src="../static/images/goods/goods118.jpg"></a>
+					<div class="prize">¥ 5.00</div>
+				</li>
+				<li>
+					<h4><a href="/goodsDetail?id=19">芹菜</a></h4>
+					<a href="/goodsDetail?id=19"><img src="../static/images/goods/goods119.jpg"></a>
+					<div class="prize">¥ 4.00</div>
+				</li>
+				<li>
+					<h4><a href="/goodsDetail?id=20">香菜</a></h4>
+					<a href="/goodsDetail?id=20"><img src="../static/images/goods/goods120.jpg"></a>
+					<div class="prize">¥ 8.00</div>
+				</li>
+				<li>
+					<h4><a href="/goodsDetail?id=21">冬瓜</a></h4>
+					<a href="/goodsDetail?id=21"><img src="../static/images/goods/goods121.jpg"></a>
+					<div class="prize">¥ 13.00</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="list_model">
+		<div class="list_title clearfix">
+			<h3 class="fl" id="model06">速冻食品</h3>
+			<div class="subtitle fl">
+				<span>|</span>
+				<a href="/goodsDetail?id=22">鱼丸</a>
+				<a href="/goodsDetail?id=23">蟹棒</a>
+				<a href="/goodsDetail?id=24">虾丸</a>
+			</div>
+			<a href="/goodsList?typeId=6" class="goods_more fr">查看更多 ></a>
+		</div>
+
+		<div class="goods_con clearfix">
+			<div class="goods_banner fl"><img src="../static/images/wanzi.jpg"></div>
+			<ul class="goods_list fl">
+				<li>
+					<h4><a href="/goodsDetail?id=22">鱼丸</a></h4>
+					<a href="/goodsDetail?id=22"><img src="../static/images/goods/goods022.jpg"></a>
+					<div class="prize">¥ 66.00</div>
+				</li>
+				<li>
+					<h4><a href="/goodsDetail?id=23">蟹棒</a></h4>
+					<a href="/goodsDetail?id=23"><img src="../static/images/goods/goods023.jpg"></a>
+					<div class="prize">¥ 68.00</div>
+				</li>
+				<li>
+					<h4><a href="/goodsDetail?id=24">虾丸</a></h4>
+					<a href="/goodsDetail?id=24"><img src="../static/images/goods/goods024.jpg"></a>
+					<div class="prize">¥ 90.00</div>
+				</li>
+				<li>
+					<h4><a href="/goodsDetail?id=25">速冻水饺</a></h4>
+					<a href="/goodsDetail?id=25"><img src="../static/images/goods/goods025.jpg"></a>
+					<div class="prize">¥ 22.00</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="../static/js/slide.js"></script>
+	<script type="text/javascript">
+		BCSlideshow('focuspic');
+		var oFruit = document.getElementById('fruit_more');
+		var oShownum = document.getElementById('show_count');
+
+		var hasorder = localStorage.getItem('order_finish');
+
+		if(hasorder)
+		{
+			oShownum.innerHTML = '2';
+		}
+
+		oFruit.onclick = function(){
+			window.location.href = 'list.html';
+		}
+	</script>
+</body>
+</html>
